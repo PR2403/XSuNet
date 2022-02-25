@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Handler">
+      <UniqueIdentifier>{089daea2-91a8-481e-99fb-40fdb52b7c50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handler\APIHandler">
+      <UniqueIdentifier>{b1d3da88-d52b-4675-8b8e-7fb4ea5604bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handler\INIHandler">
+      <UniqueIdentifier>{396ff7cc-dc37-48fe-aa6d-08dee8965594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handler\JsonHandler">
+      <UniqueIdentifier>{51c42ea2-7cda-4ba0-99c8-8921f8ee9f27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connector">
+      <UniqueIdentifier>{f38d2aa2-50f7-47bb-b9d5-bef4aafa6146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{987549f8-dc82-41d0-8d5a-fcb6a9831b80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Class">
+      <UniqueIdentifier>{fee870e9-2fd8-43e3-ae8a-9a5d0abd9b37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{96fdfeed-1be4-423e-9b89-e0b0713ae881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs">
+      <UniqueIdentifier>{8270e9f8-08dc-42a2-b757-b648597e8c9e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="private\APIHandler.cpp">
+      <Filter>Handler\APIHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="private\INIHandler.cpp">
+      <Filter>Handler\INIHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="private\JsonHandler.cpp">
+      <Filter>Handler\JsonHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Connector.cpp">
+      <Filter>Connector</Filter>
+    </ClCompile>
+    <ClCompile Include="private\Core.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="private\MethodsLibrary.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="private\XSuNet.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="public\APIHandler.h">
+      <Filter>Handler\APIHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="public\INIHandler.h">
+      <Filter>Handler\INIHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="public\JsonHandler.h">
+      <Filter>Handler\JsonHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Connector.h">
+      <Filter>Connector</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Core.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="public\RecvTaskInfo.h">
+      <Filter>Class</Filter>
+    </ClInclude>
+    <ClInclude Include="public\SegmentMes.h">
+      <Filter>Class</Filter>
+    </ClInclude>
+    <ClInclude Include="public\MethodsLibrary.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
