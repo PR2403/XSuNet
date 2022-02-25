@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Version-2.0.0-green.svg)   ![](https://img.shields.io/badge/By-Suyc323-orange.svg)  ![](https://img.shields.io/badge/State-Development-blue.svg)
+![](https://img.shields.io/badge/Development-2.0.0-green.svg)  ![](https://img.shields.io/badge/Release-Unreleased-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
 
 PreRelease版本2.0.0 review1 预计在2022年3月3日发布
 
