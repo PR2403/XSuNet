@@ -1,4 +1,7 @@
-![](https://img.shields.io/badge/version-2.0.0-green.svg)   ![](https://img.shields.io/badge/By-Suyc323-orange.svg)  ![](https://img.shields.io/badge/这是一份-毕业设计-blue.svg)
+![](https://img.shields.io/badge/version-2.0.0-green.svg)   ![](https://img.shields.io/badge/By-Suyc323-orange.svg)  ![](https://img.shields.io/badge/State-Development-blue.svg)
+
+PreRelease版本2.0.0 review1 预计在2022年3月3日发布
+
 # XSuNet
 A server-side framework for intelligent building cloud services.
 ## 2.0新特性
