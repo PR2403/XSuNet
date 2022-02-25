@@ -1,5 +1,4 @@
-![](https://img.shields.io/badge/version-2.0.0-green.svg)   ![](https://img.shields.io/badge/By-Suyc323-orange.svg)  
-![](https://img.shields.io/badge/State-Development-blue.svg)
+![](https://img.shields.io/badge/version-2.0.0-green.svg)   ![](https://img.shields.io/badge/By-Suyc323-orange.svg)  ![](https://img.shields.io/badge/State-Development-blue.svg)
 
 PreRelease版本2.0.0 review1 预计在2022年3月3日发布
 
@@ -8,7 +7,7 @@ A server-side framework for intelligent building cloud services.
 ## 2.0新特性
 
 #### 动态多线程
-所有的消息Server收到后会存入一个动态数组容器，服务器会根据负载情况启用多个线程从容器中拿取消息进行处理，负载上升时会增加启用的线程数（最多为3个），负载下降时会减少启用的线程数。当没有消息即0负载时，Server会将所有消息处理线程销毁，即Core模块进入休眠，直到Connect模块收到新的消息。
+所有Server收到的消息或是发出的消息会存入一个动态数组容器，服务器会根据负载情况启用多个线程从容器中拿取消息进行处理，负载上升时会增加启用的线程数（最多发送/接受各3个），负载下降时会减少启用的线程数。当没有消息即0负载时，Server会将所有消息处理线程销毁，即Core模块进入休眠，直到Connect模块收到新的消息。
 
 #### 过期包丢弃
 服务器在处理信息Device发出的上报请求和远程控制端发出的控制指令等具有时效性的信息时，会记录最近的一个包的TIME作为Device或者Remote Controller的最近更新时间，如果收到的包的时间早于最近更新时间，将视作过期包直接予以丢弃。
