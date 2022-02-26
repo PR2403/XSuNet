@@ -1,9 +1,9 @@
 ![](https://img.shields.io/badge/Development-2.0.1-green.svg)  ![](https://img.shields.io/badge/Release-Unreleased-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
-
 PreRelease版本2.0 Preview1 预计在2022年3月3日发布
 
 # XSuNet
 A server-side framework for intelligent building cloud services.
+用于搭建智能楼宇云服务的服务端程序框架
 ## 2.0新特性
 
 #### 动态多线程
@@ -16,7 +16,7 @@ A server-side framework for intelligent building cloud services.
 #### 超大数据分包发送
 服务器2.0版本起支持接受超过单次传输大小上限的数据分为多个包进行传送，目前该功能在2.0版本处于Beta阶段，存在出现问题和修改、删除的可能，请暂时不要依赖该功能。该功能将在2.1版本正式可用并在说明文档中更新。
 
-## 用于搭建智能楼宇云服务端程序的XSuNet框架
+
 
 
 
