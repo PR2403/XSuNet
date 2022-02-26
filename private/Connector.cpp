@@ -1,7 +1,7 @@
 /*
 This file is part of XSuNet Project.
 Connector.h/cpp- The base code of connection and data transmission.
-Copyright (c) 2021-2022 SuYichen.
+Copyright (c) 2021-2022 Suyc323.
 */
 
 #include "Connector.h"

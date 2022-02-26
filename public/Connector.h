@@ -1,7 +1,7 @@
 /*
 This file is part of XSuNet Project.
 Connector.h/cpp- The base code of connection and data transmission.
-Copyright (c) 2021-2022 SuYichen.
+Copyright (c) 2021-2022 Suyc323.
 */
 #pragma once
 
@@ -31,23 +31,28 @@ Copyright (c) 2021-2022 SuYichen.
 
 
 #include "Core.h"
+
+//server_connector
 class server
 {
 public:
     server(Core* SerCo,char* SER_IP,int SER_PORT);
     ~server();
-    Core* ServerCore;
+    Core* ServerCore;//指向服务器业务核心ServerCore的指针
+    //初始化，由process函数自动调用
     void init();
+    //connector主线程
     void process();
     bool canrebootnow();
 private:
     SOCKET listener;//客户端服务监听套接字
     sockaddr_in  serverAddr;//IPV4的地址方式
     std::vector <SOCKET> socnum;//存放创建的套接字
-    char* SERVER_IP;
-    int SERVER_PORT;
+    char* SERVER_IP;//服务器IP
+    int SERVER_PORT;//服务器监听端口
 };
 
+//对Socket收到的数据包转发至Core业务的Handler
 class Handler
 {
 public:

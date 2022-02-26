@@ -141,15 +141,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="private\DevicesContainer.cpp" />
     <ClCompile Include="private\APIHandler.cpp" />
     <ClCompile Include="private\Connector.cpp" />
     <ClCompile Include="private\Core.cpp" />
     <ClCompile Include="private\INIHandler.cpp" />
     <ClCompile Include="private\JsonHandler.cpp" />
     <ClCompile Include="private\MethodsLibrary.cpp" />
+    <ClCompile Include="private\XDevice.cpp" />
     <ClCompile Include="private\XSuNet.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="public\DevicesContainer.h" />
     <ClInclude Include="public\APIHandler.h" />
     <ClInclude Include="public\Connector.h" />
     <ClInclude Include="public\Core.h" />
@@ -158,6 +161,11 @@
     <ClInclude Include="public\MethodsLibrary.h" />
     <ClInclude Include="public\RecvTaskInfo.h" />
     <ClInclude Include="public\SegmentMes.h" />
+    <ClInclude Include="public\XDevice.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

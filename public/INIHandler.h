@@ -1,7 +1,3 @@
-/*
-This file is part of MIBMSCloudSystem Project.
-Copyright (c) 2021-2022 SuYichen.
-*/
 #pragma once
 #include <iostream>
 #include <fstream>

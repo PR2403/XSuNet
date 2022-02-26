@@ -1,7 +1,7 @@
 /*
 This file is part of XSuNet Project.
 Core.h/cpp- The core of server.
-Copyright (c) 2021-2022 SuYichen.
+Copyright (c) 2021-2022 Suyc323.
 */
 #include "Core.h"
 #include "stdio.h"
@@ -61,7 +61,7 @@ void Core::TaskHandler_A()
             RecvTaskInfo info = RecvTasks[0];
             RecvTasks.erase(RecvTasks.begin());
             RTL_mutex.unlock();
-
+            RInfoReader(info);
         }
         else
         {
@@ -72,7 +72,7 @@ void Core::TaskHandler_A()
             break;
         }
     }
-}//RecvTaskHanler线程A
+}
 
 void Core::TaskHandler_B()
 {
@@ -84,8 +84,7 @@ void Core::TaskHandler_B()
             RecvTaskInfo info = RecvTasks[0];
             RecvTasks.erase(RecvTasks.begin());
             RTL_mutex.unlock();
-
-
+            RInfoReader(info);
         }
         else
         {
@@ -108,6 +107,7 @@ void Core::TaskHandler_C()
             RecvTaskInfo info = RecvTasks[0];
             RecvTasks.erase(RecvTasks.begin());
             RTL_mutex.unlock();
+            RInfoReader(info);
         }
         else
         {

@@ -32,6 +32,9 @@
     <Filter Include="Libs">
       <UniqueIdentifier>{8270e9f8-08dc-42a2-b757-b648597e8c9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Container">
+      <UniqueIdentifier>{05198d1b-6395-4a67-88e8-f3dce5fdf960}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="private\APIHandler.cpp">
@@ -53,6 +56,12 @@
       <Filter>Library</Filter>
     </ClCompile>
     <ClCompile Include="private\XSuNet.cpp" />
+    <ClCompile Include="private\DevicesContainer.cpp">
+      <Filter>Container</Filter>
+    </ClCompile>
+    <ClCompile Include="private\XDevice.cpp">
+      <Filter>Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\APIHandler.h">
@@ -79,5 +88,15 @@
     <ClInclude Include="public\MethodsLibrary.h">
       <Filter>Library</Filter>
     </ClInclude>
+    <ClInclude Include="public\DevicesContainer.h">
+      <Filter>Container</Filter>
+    </ClInclude>
+    <ClInclude Include="public\XDevice.h">
+      <Filter>Class</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
   </ItemGroup>
 </Project>

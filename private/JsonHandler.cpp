@@ -1,6 +1,6 @@
 /*
 This file is part of XSuNet Project.
-Copyright (c) 2021-2022 SuYichen.
+Copyright (c) 2021-2022 Suyc323.
 */
 #include "JsonHandler.h"
 #include <iostream>
