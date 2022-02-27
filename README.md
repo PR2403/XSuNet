@@ -57,7 +57,7 @@ A server-side framework for intelligent building cloud services.
 该条请求将获得对应Device的全部信息
 
 ```
-{"API":"FIND_DEVICES_BY_CLASS","ARGS":{"DEVICE_CLASSNAME":"LIGHT","KEY":"X45V45A54N42"}}
+{"API":"Client_FIND_DEVICES_BY_CLASS","ARGS":{"DEVICE_CLASSNAME":"LIGHT","KEY":"X45V45A54N42"}}
 ```
 
 该条请求获得对应class的全部Device的全部信息
@@ -65,7 +65,7 @@ A server-side framework for intelligent building cloud services.
 2.	获取接口
 
 ```
-{"API":"GET_DEVICES","ARGS":{"KEY":"X45V45A54N42"}}
+{"API":"Client_GET_DEVICES","ARGS":{"KEY":"X45V45A54N42"}}
 ```
 
 该条请求获得Server下挂的所有Device的所有信息。
