@@ -5,7 +5,7 @@ Copyright (c) 2021-2022 Suyc323.
 */
 #pragma once
 
-#define XSuNetVersion "2.0.0"
+#define XSuNetVersion "2.0.2"
 
 #include "INIHandler.h"
 #include "INIHandler.h"
