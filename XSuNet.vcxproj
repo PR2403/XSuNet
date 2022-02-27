@@ -163,6 +163,7 @@
     <ClInclude Include="public\MethodsLibrary.h" />
     <ClInclude Include="public\RecvTaskInfo.h" />
     <ClInclude Include="public\SegmentMes.h" />
+    <ClInclude Include="public\SendTaskInfo.h" />
     <ClInclude Include="public\XDevice.h" />
   </ItemGroup>
   <ItemGroup>

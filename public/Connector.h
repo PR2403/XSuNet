@@ -22,7 +22,6 @@ Copyright (c) 2021-2022 Suyc323.
 #include<ws2tcpip.h>//定义socklen_t
 #pragma comment(lib, "WS2_32")  // 链接WS2_32.lib
 
-
 /*LINUX
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -31,6 +30,8 @@ Copyright (c) 2021-2022 Suyc323.
 
 
 #include "Core.h"
+
+struct SendTaskInfo;
 
 //server_connector
 class server
@@ -44,6 +45,7 @@ public:
     //connector主线程
     void process();
     bool canrebootnow();
+    void senddata(SendTaskInfo info);
 private:
     SOCKET listener;//客户端服务监听套接字
     sockaddr_in  serverAddr;//IPV4的地址方式

@@ -6,6 +6,7 @@ Copyright (c) 2021-2022 Suyc323.
 
 #include "Connector.h"
 #include "stdio.h"
+#include "SendTaskInfo.h"
 
 server::server(Core* SerCo,char* SER_IP,int SER_PORT)
 {
@@ -142,6 +143,10 @@ bool server::canrebootnow()
 {
     return (ServerCore->IsBusy());
 }
+void server::senddata(SendTaskInfo info)
+{
+    send(info.client, info.Sinfo, 1024, 0);
+}
 Handler::Handler(server* SERVER)
 {
     Ser = SERVER;
@@ -156,5 +161,5 @@ void Handler::TaskDistributor(SOCKET Socket, char info[1024])
 {
 
     Core* core = Ser->ServerCore;
-    core->AddTask(Socket,info);
+    core->AddTask(0,Socket,info);
 }

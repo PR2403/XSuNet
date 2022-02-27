@@ -10,13 +10,13 @@ std::string LuaScript::RunLua(std::string DeviceStateVariables)
     lua_State* luaEnv = initLuaEnv();
     if (!luaEnv)
     {
-        return "LuaError0";
+        return (DeviceLuaScriptPtr+"_LuaError0");
     }
     // 加载脚本到Lua环境中.  
     if (!loadLuaFile(luaEnv, DeviceLuaScriptPtr))
     {
         cout << "Load Lua File FAILED!" << endl;
-        return "LuaError1";
+        return (DeviceLuaScriptPtr+"_LuaError1");
     }
     // 将要调用的函数和函数调用参数入栈.  
     lua_getglobal(luaEnv, "Run");
@@ -26,16 +26,15 @@ std::string LuaScript::RunLua(std::string DeviceStateVariables)
     lua_pcall(luaEnv, 1, 1, 0);
 
     // 获取返回值
-    if (lua_isstring(luaEnv, -1))
-    {
-        std::string result = lua_tostring(luaEnv, -1);
-    }
+    std::string result = lua_tostring(luaEnv, -1);
 
     // 将返回值出栈.  
     lua_pop(luaEnv, 1);
 
     // 释放Lua运行时环境.  
     lua_close(luaEnv);
+
+    return result;
 }
 
 //  

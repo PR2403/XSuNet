@@ -16,7 +16,6 @@ class LuaScript
 {
 public:
     std::string DeviceLuaScriptPtr;//设备对应Lua的路径
-    //调用执行该Lua脚本
     std::string RunLua(std::string DeviceStateVariables);
     LuaScript(std::string LuaScriptPtr) {
         DeviceLuaScriptPtr = LuaScriptPtr;

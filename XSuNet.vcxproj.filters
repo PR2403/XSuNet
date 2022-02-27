@@ -103,6 +103,9 @@
     <ClInclude Include="public\LuaScript.h">
       <Filter>LuaSupport</Filter>
     </ClInclude>
+    <ClInclude Include="public\SendTaskInfo.h">
+      <Filter>Class</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
