@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Development-2.0.1-green.svg)  ![](https://img.shields.io/badge/Release-Unreleased-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
+![](https://img.shields.io/badge/Development-2.0.2-green.svg)  ![](https://img.shields.io/badge/Release-2.0Preview1-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
 
 PreRelease版本2.0 Preview1 已发布！
 
