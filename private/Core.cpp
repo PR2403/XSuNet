@@ -180,7 +180,9 @@ void Core::RInfoReader(RecvTaskInfo RInfo)
         int SectionNum = Jhandler->_get_Json_value_int(RInfo.Sinfo, "SectionNum");
         SegmentMes SM = { MesID,Section,SectionNum,RInfo };
         delete Jhandler;
-        
+        //实际功能实现
+
+        //
     }
     else//常规数据处理
     {

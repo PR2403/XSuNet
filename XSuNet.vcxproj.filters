@@ -35,6 +35,9 @@
     <Filter Include="Container">
       <UniqueIdentifier>{05198d1b-6395-4a67-88e8-f3dce5fdf960}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LuaSupport">
+      <UniqueIdentifier>{22c42db2-3ed6-4acb-aeb9-6316ab0e297f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="private\APIHandler.cpp">
@@ -61,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="private\XDevice.cpp">
       <Filter>Class</Filter>
+    </ClCompile>
+    <ClCompile Include="private\LuaScript.cpp">
+      <Filter>LuaSupport</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,9 +100,13 @@
     <ClInclude Include="public\XDevice.h">
       <Filter>Class</Filter>
     </ClInclude>
+    <ClInclude Include="public\LuaScript.h">
+      <Filter>LuaSupport</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
+    <None Include="README.md" />
   </ItemGroup>
 </Project>

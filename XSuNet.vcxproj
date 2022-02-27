@@ -147,6 +147,7 @@
     <ClCompile Include="private\Core.cpp" />
     <ClCompile Include="private\INIHandler.cpp" />
     <ClCompile Include="private\JsonHandler.cpp" />
+    <ClCompile Include="private\LuaScript.cpp" />
     <ClCompile Include="private\MethodsLibrary.cpp" />
     <ClCompile Include="private\XDevice.cpp" />
     <ClCompile Include="private\XSuNet.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="public\Core.h" />
     <ClInclude Include="public\INIHandler.h" />
     <ClInclude Include="public\JsonHandler.h" />
+    <ClInclude Include="public\LuaScript.h" />
     <ClInclude Include="public\MethodsLibrary.h" />
     <ClInclude Include="public\RecvTaskInfo.h" />
     <ClInclude Include="public\SegmentMes.h" />
@@ -166,6 +168,7 @@
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
