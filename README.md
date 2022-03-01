@@ -1,6 +1,8 @@
-![](https://img.shields.io/badge/Development-2.0.2-green.svg)  ![](https://img.shields.io/badge/Release-2.0Preview1-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
+![](https://img.shields.io/badge/Alpha-3.0-blue.svg)  ![](https://img.shields.io/badge/Development-2.0.2-green.svg)  ![](https://img.shields.io/badge/Release-2.0Preview1-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
 
-PreRelease版本2.0 Preview1 已发布！
+Release版本2.0(LTS)已发布！
+
+现在可以从源码探索3.0版本前瞻:XSuNet_Origin(3.0Alpha)！
 
 # XSuNet
 A server-side framework for intelligent building cloud services.
