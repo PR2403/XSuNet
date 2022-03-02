@@ -1,6 +1,6 @@
 /*
 This file is part of XSuNet Project.
-Core.h/cpp- The core of server.
+Core.h/cpp- The core of SocketConnector.
 Copyright (c) 2021-2022 Suyc323.
 */
 #include "Core.h"
@@ -16,19 +16,24 @@ Copyright (c) 2021-2022 Suyc323.
 Core::Core()
 {
     std::cout << "XSuNet版本:"<<XSuNetVersion<< std::endl;
-    printf( "正在启用XSuNet核心服务...\n");
+    std::string TimeTag1 = GetTimeTag();
+    std::cout<<TimeTag1<<":正在启用XSuNet核心服务...\n"<<std::endl;
     THA = false;
     THB = false;
     THC = false;
+    THD = false;
+    THE = false;
+    THF = false;
     CMyINI* p = new CMyINI();
     p->ReadINI("./Configs/ServerSettings.ini");
     std::string s_ip = p->GetValue("Network", "SERVER_IP");
     char* SERVER_IP = StringToChar(s_ip);
     std::string s_port = p->GetValue("Network", "SERVER_PORT");
     int SERVER_PORT= atoi(s_port.c_str());
-    CONNECTOR = new server(this, SERVER_IP, SERVER_PORT);
+    CONNECTOR = new SocketConnector(this, SERVER_IP, SERVER_PORT);
     THPM=new std::thread(&Core::THPManager, this);
-    printf("核心服务已启用√ \n");
+    std::string TimeTag2 = GetTimeTag();
+    std::cout << TimeTag2 << ":核心服务已启用√ \n" << std::endl;
     APIH = new APIHandler;
     DC = new DevicesContainer;
 }
@@ -47,6 +52,10 @@ bool Core::IsBusy()
 	return (sizeof(RecvTasks) > 0);
 }
 
+/// @brief 将收到的信息加入Core的信息处理任务列表
+/// @param tasktype 任务类型 0:处理收到的信息 1:创建信息发送任务
+/// @param client 信息来源/目标的套接字描述符
+/// @param info 消息的内容
 void Core::AddTask(int tasktype,SOCKET client, char info[1024])
 {
     if (tasktype == 0)
@@ -287,9 +296,11 @@ void Core::THPManager()
     }
 }
 
+/// @brief 按照消息属性处理信息
+/// @param RInfo 收到的信息 
 void Core::RInfoReader(RecvTaskInfo RInfo)
 {
-    jsonhandler* Jhandler = new jsonhandler;
+    JsonHandler_AnalysisTool* Jhandler = new JsonHandler_AnalysisTool;
     bool IsSegmentMes = Jhandler->_get_Json_value_bool(RInfo.Sinfo, "SegmentMes");
     if (IsSegmentMes)//分包数据处理
     {

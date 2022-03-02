@@ -7,8 +7,9 @@ Copyright (c) 2021-2022 Suyc323.
 #include "Connector.h"
 #include "stdio.h"
 #include "SendTaskInfo.h"
+#include "DevicesContainer.h"
 
-server::server(Core* SerCo,char* SER_IP,int SER_PORT)
+SocketConnector::SocketConnector(Core* SerCo,char* SER_IP,int SER_PORT)
 {
     ServerCore = SerCo;
     listener = 0;
@@ -18,12 +19,12 @@ server::server(Core* SerCo,char* SER_IP,int SER_PORT)
     serverAddr.sin_port = SERVER_PORT;
     inet_pton(AF_INET, SERVER_IP, &serverAddr.sin_addr.s_addr);//将字符串类型转换uint32_t
 }
-server::~server()
+SocketConnector::~SocketConnector()
 {
     delete ServerCore;
 }
 //初始化函数，功能创建监听套接字，绑定端口，并进行监听
-void server::init()
+void SocketConnector::init()
 {
     int   Ret;
     WSADATA   wsaData;// 用于初始化套接字环境
@@ -37,7 +38,8 @@ void server::init()
 
     listener = socket(AF_INET, SOCK_STREAM, 0);//采用ipv4,TCP传输
     if (listener == -1) { printf("Error at socket(): %ld\n", WSAGetLastError()); perror("listener failed"); exit(1); }
-    printf("监听服务已开启√ \n");
+    std::string TimeTag = GetTimeTag();
+    std::cout<<TimeTag<<":监听服务已开启√ \n"<<std::endl;
 
     unsigned long ul = 1;
     if (ioctlsocket(listener, FIONBIO, (unsigned long*)&ul) == -1) { perror("ioctl failed"); exit(1); };
@@ -50,7 +52,7 @@ void server::init()
     socnum.push_back(listener);//加入监听套接字
 }
 
-void server::process()
+void SocketConnector::process()
 {
 
     int mount = 0;
@@ -111,14 +113,14 @@ void server::process()
                     //检测是否断线
                     if (size == 0 || size == -1)
                     {
+                        ServerCore->DC->DeleteDevice(socnum[i]);//注销设备
                         closesocket(socnum[i]);//先关闭这个套接字
-                        
                         SWD.push_back(i);
                     }
                     //若是没有掉线
                     else
                     {
-                        Handler* handler = new Handler(this);
+                        SocketHandler* handler = new SocketHandler(this);
                         char NewBuf[1024];
                         strcpy_s(NewBuf, buf);
                         handler->TaskDistributor(socnum[i], NewBuf);
@@ -139,25 +141,25 @@ void server::process()
 
     }
 }
-bool server::canrebootnow()
+bool SocketConnector::canrebootnow()
 {
     return (ServerCore->IsBusy());
 }
-void server::senddata(SendTaskInfo info)
+void SocketConnector::senddata(SendTaskInfo info)
 {
     send(info.client, info.Sinfo, 1024, 0);
 }
-Handler::Handler(server* SERVER)
+SocketHandler::SocketHandler(SocketConnector* SERVER)
 {
     Ser = SERVER;
 }
 
-Handler::~Handler()
+SocketHandler::~SocketHandler()
 {
 }
 
 
-void Handler::TaskDistributor(SOCKET Socket, char info[1024])
+void SocketHandler::TaskDistributor(SOCKET Socket, char info[1024])
 {
 
     Core* core = Ser->ServerCore;

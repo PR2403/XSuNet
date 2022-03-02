@@ -5,7 +5,7 @@ Copyright (c) 2021-2022 Suyc323.
 */
 #pragma once
 
-#define XSuNetVersion "2.0.2"
+
 
 #include "INIHandler.h"
 #include "INIHandler.h"
@@ -34,11 +34,11 @@ Copyright (c) 2021-2022 Suyc323.
 struct SendTaskInfo;
 
 //server_connector
-class server
+class SocketConnector
 {
 public:
-    server(Core* SerCo,char* SER_IP,int SER_PORT);
-    ~server();
+    SocketConnector(Core* SerCo,char* SER_IP,int SER_PORT);
+    ~SocketConnector();
     Core* ServerCore;//指向服务器业务核心ServerCore的指针
     //初始化，由process函数自动调用
     void init();
@@ -54,13 +54,13 @@ private:
     int SERVER_PORT;//服务器监听端口
 };
 
-//对Socket收到的数据包转发至Core业务的Handler
-class Handler
+//对Socket收到的数据包转发至Core业务的SocketHandler
+class SocketHandler
 {
 public:
-    Handler(server* SERVER);
-    ~Handler();
+    SocketHandler(SocketConnector* SERVER);
+    ~SocketHandler();
     void TaskDistributor(SOCKET client, char info[1024]);
 private:
-    server* Ser;
+    SocketConnector* Ser;
 };

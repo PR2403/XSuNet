@@ -6,11 +6,11 @@
 #include "Connector.h"
 #include "Windows.h"
 class Core;
-class server;
+class SocketConnector;
 
 int main() {
     system("chcp 65001");
     Core* CO = new Core;
-    server* CON=CO->CONNECTOR;
+    SocketConnector* CON=CO->CONNECTOR;
     CON->process();
 }

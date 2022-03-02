@@ -1,8 +1,10 @@
 /*
 This file is part of XSuNet Project.
-Core.h/cpp- The core of server.
+Core.h/cpp- The core of SocketConnector.
 Copyright (c) 2021-2022 Suyc323.
 */
+#define XSuNetVersion "2.0LTS"
+
 #pragma once
 #include "stdio.h"
 #include "SegmentMes.h"
@@ -13,7 +15,7 @@ Copyright (c) 2021-2022 Suyc323.
 #include <thread>
 #include <vector>
 class APIHandler;
-class server;
+class SocketConnector;
 class DevicesContainer;
 
 class Core
@@ -26,7 +28,7 @@ public:
 	//添加Core收发任务
 	void AddTask(int tasktype, SOCKET client, char info[1024]);
 
-	server* CONNECTOR;//server_connector
+	SocketConnector* CONNECTOR;//server_connector
 	APIHandler* APIH;//APIHandler
 	DevicesContainer* DC;
 

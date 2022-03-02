@@ -11,15 +11,13 @@ Copyright (c) 2021-2022 Suyc323.
 class Core;
 
 /*DEVICE API*/
-//设备注册 
-void DEVICE_REGISTER(Core* CORE, std::string args, SOCKET Socket);
 
-//设备信息更新(调用本功能函数即执行整个控制流程)
+void DEVICE_REGISTER(Core* CORE, std::string args, SOCKET Socket);
 void DEVICE_UPDATE_INFO(Core* CORE, std::string args, SOCKET Socket);
 
 
 /*CLIENT API*/
-//查找设备
+
 void CLIENT_FIND_DEVICE(Core* CORE, std::string args, SOCKET Socket);
 
 

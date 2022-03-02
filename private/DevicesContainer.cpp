@@ -1,5 +1,5 @@
 #include "DevicesContainer.h"
-#include "XDevice.h"
+#include "MethodsLibrary.h"
 
 XDevice* DevicesContainer::GetDevice(std::string DeviceID)
 {
@@ -31,13 +31,15 @@ XDevice* DevicesContainer::GetDevice(SOCKET Socket)
 
 int DevicesContainer::GenarateNewDevice(std::string DeviceID,std::string DeviceClass, SOCKET Socket)
 {
-	if (Devices.size()>= 10)
+	if (Devices.size()>= 100)
 	{
 		return 0;
 	}
 	else
 	{
 		Devices.push_back(XDevice(DeviceID, DeviceClass, Socket));
+		std::string TimeTag = GetTimeTag();
+		std::cout<<TimeTag.data()<<":"<<DeviceID<<" "<<"ÐÂÉè±¸×¢²á"<<std::endl;
 		DevicesNum = int(Devices.size());
 		return 1;
 	}

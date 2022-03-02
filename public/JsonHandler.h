@@ -6,11 +6,11 @@ Copyright (c) 2021-2022 Suyc323.
 
 #include "json\json.h"
 
-class jsonhandler
+class JsonHandler_AnalysisTool
 {
 public:
-	jsonhandler();
-	~jsonhandler();
+	JsonHandler_AnalysisTool();
+	~JsonHandler_AnalysisTool();
 	std::string _get_Json_value_string(char stringtemp[1024], std::string key);
 	std::string _get_Json_value_string(std::string stringtemp, std::string key);
 	std::string _get_Json_value_string(char stringtemp[1024], std::string key, std::string ROOT);
@@ -23,11 +23,11 @@ private:
 
 };
 
-class jsonsendler
+class JsonHandler_MakeTool
 {
 public:
-	jsonsendler();
-	~jsonsendler();
+	JsonHandler_MakeTool();
+	~JsonHandler_MakeTool();
 	void AddKeyAndValue_int(std::string key,int value);
 	void AddKeyAndValue_string(std::string key, std::string value);
 	void AddKeyAndValue_bool(std::string key, bool value);

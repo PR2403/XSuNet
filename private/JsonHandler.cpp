@@ -5,27 +5,15 @@ Copyright (c) 2021-2022 Suyc323.
 #include "JsonHandler.h"
 #include <iostream>
 
-jsonhandler::jsonhandler()
+JsonHandler_AnalysisTool::JsonHandler_AnalysisTool()
 {
 }
 
-jsonhandler::~jsonhandler()
+JsonHandler_AnalysisTool::~JsonHandler_AnalysisTool()
 {
 }
 
-std::string jsonhandler::_get_Json_value_string(char stringtemp[1024], std::string key)
-{
-	std::string TargetStr = "";
-	Json::Reader reader;
-	Json::Value root;
-	if (reader.parse(stringtemp, root))
-	{
-		TargetStr = root[key].asString();
-	}
-	return TargetStr;
-}
-
-std::string jsonhandler::_get_Json_value_string(std::string stringtemp, std::string key)
+std::string JsonHandler_AnalysisTool::_get_Json_value_string(char stringtemp[1024], std::string key)
 {
 	std::string TargetStr = "";
 	Json::Reader reader;
@@ -37,7 +25,19 @@ std::string jsonhandler::_get_Json_value_string(std::string stringtemp, std::str
 	return TargetStr;
 }
 
-std::string jsonhandler::_get_Json_value_string(char stringtemp[1024], std::string key, std::string UKey)
+std::string JsonHandler_AnalysisTool::_get_Json_value_string(std::string stringtemp, std::string key)
+{
+	std::string TargetStr = "";
+	Json::Reader reader;
+	Json::Value root;
+	if (reader.parse(stringtemp, root))
+	{
+		TargetStr = root[key].asString();
+	}
+	return TargetStr;
+}
+
+std::string JsonHandler_AnalysisTool::_get_Json_value_string(char stringtemp[1024], std::string key, std::string UKey)
 {
 	std::string TargetStr = "";
 	Json::Reader reader;
@@ -49,7 +49,7 @@ std::string jsonhandler::_get_Json_value_string(char stringtemp[1024], std::stri
 	return TargetStr;
 }
 
-std::string jsonhandler::_get_Json_value_string(std::string stringtemp, std::string key, std::string UKey)
+std::string JsonHandler_AnalysisTool::_get_Json_value_string(std::string stringtemp, std::string key, std::string UKey)
 {
 	std::string TargetStr = "";
 	Json::Reader reader;
@@ -61,7 +61,7 @@ std::string jsonhandler::_get_Json_value_string(std::string stringtemp, std::str
 	return TargetStr;
 }
 
-std::string jsonhandler::_get_Json_value_string(char stringtemp[1024], std::string key, std::string ROOT2, std::string ROOT1)
+std::string JsonHandler_AnalysisTool::_get_Json_value_string(char stringtemp[1024], std::string key, std::string ROOT2, std::string ROOT1)
 {
 	std::string TargetStr = "";
 	Json::Reader reader;
@@ -73,7 +73,7 @@ std::string jsonhandler::_get_Json_value_string(char stringtemp[1024], std::stri
 	return TargetStr;
 }
 
-std::string jsonhandler::_get_Json_value_string(std::string stringtemp, std::string key, std::string ROOT2, std::string ROOT1)
+std::string JsonHandler_AnalysisTool::_get_Json_value_string(std::string stringtemp, std::string key, std::string ROOT2, std::string ROOT1)
 {
 	std::string TargetStr = "";
 	Json::Reader reader;
@@ -85,7 +85,7 @@ std::string jsonhandler::_get_Json_value_string(std::string stringtemp, std::str
 	return TargetStr;
 }
 
-int jsonhandler::_get_Json_value_int(char stringtemp[1024], std::string key)
+int JsonHandler_AnalysisTool::_get_Json_value_int(char stringtemp[1024], std::string key)
 {
 	int TargetInt = NULL;
 	Json::Reader reader;
@@ -98,7 +98,7 @@ int jsonhandler::_get_Json_value_int(char stringtemp[1024], std::string key)
 
 }
 
-bool jsonhandler::_get_Json_value_bool(char stringtemp[1024], std::string key)
+bool JsonHandler_AnalysisTool::_get_Json_value_bool(char stringtemp[1024], std::string key)
 {
 	bool TargetBool = false;
 	Json::Reader reader;
@@ -111,30 +111,30 @@ bool jsonhandler::_get_Json_value_bool(char stringtemp[1024], std::string key)
 }
 
 
-jsonsendler::jsonsendler()
+JsonHandler_MakeTool::JsonHandler_MakeTool()
 {
 }
 
-jsonsendler::~jsonsendler()
+JsonHandler_MakeTool::~JsonHandler_MakeTool()
 {
 }
 
-void jsonsendler::AddKeyAndValue_int(std::string key, int value)
-{
-	root[key] = Json::Value(value);
-}
-
-void jsonsendler::AddKeyAndValue_string(std::string key, std::string value)
+void JsonHandler_MakeTool::AddKeyAndValue_int(std::string key, int value)
 {
 	root[key] = Json::Value(value);
 }
 
-void jsonsendler::AddKeyAndValue_bool(std::string key, bool value)
+void JsonHandler_MakeTool::AddKeyAndValue_string(std::string key, std::string value)
 {
 	root[key] = Json::Value(value);
 }
 
-std::string jsonsendler::OutputJsonString()
+void JsonHandler_MakeTool::AddKeyAndValue_bool(std::string key, bool value)
+{
+	root[key] = Json::Value(value);
+}
+
+std::string JsonHandler_MakeTool::OutputJsonString()
 {
 	Json::StyledWriter sw;
 	return sw.write(root);

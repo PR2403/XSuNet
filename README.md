@@ -3,7 +3,7 @@
 PreRelease版本2.0 Preview1 已发布！
 
 # XSuNet
-A server-side framework for intelligent building cloud services.
+A SocketConnector-side framework for intelligent building cloud services.
 
 用于搭建智能楼宇云服务的服务端程序框架
 ## 2.x新特性
