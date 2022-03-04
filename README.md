@@ -2,7 +2,7 @@
 
 Release版本2.0(LTS)已发布！
 
-现在可以从源码探索3.0版本前瞻:XSuNet_Origin(3.0Alpha)！
+现在可以从源码探索3.0版本前瞻:(分支)XSuNet3-master
 
 # XSuNet
 A SocketConnector-side framework for intelligent building cloud services.
