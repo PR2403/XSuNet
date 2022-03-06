@@ -1,23 +1,20 @@
-![](https://img.shields.io/badge/Development-2.0.2-green.svg)  ![](https://img.shields.io/badge/Release-2.0Preview1-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
+![](https://img.shields.io/badge/Development-3.0Alpha-green.svg)  ![](https://img.shields.io/badge/Release-2.0LTS-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
 
-PreRelease版本2.0 Preview1 已发布！
+长期支持版本2.0 LTS 已发布！
+
+查看3.0源码以了解我的最新开发进展和XSuNet的新功能特性，但是3.0Alpha版本目前不具有运行可用性，请不要下载编译使用。
 
 # XSuNet
 A SocketConnector-side framework for intelligent building cloud services.
 
 用于搭建智能楼宇云服务的服务端程序框架
-## 2.x新特性
 
-#### 动态多线程（2.0）
-所有Server收到的消息或是发出的消息会存入一个动态数组容器，服务器会根据负载情况启用多个线程从容器中拿取消息进行处理，负载上升时会增加启用的线程数（最多发送/接受各3个），负载下降时会减少启用的线程数。当没有消息即0负载时，Server会将所有消息处理线程销毁，即Core模块进入休眠，直到Connect模块收到新的消息或有新的消息需要发送。
+## Gen3新特性
 
-#### 过期包丢弃（2.1）
-服务器在处理信息Device发出的上报请求和远程控制端发出的控制指令等具有时效性的信息时，会记录最近的一个包的TIME作为Device或者Remote Controller的最近更新时间，如果收到的包的时间早于最近更新时间，将视作过期包直接予以丢弃。
+### 分布式负载均衡服务器
 
-*所有的消息都应该带有TIME属性（即消息的发出时间）。如果消息不带有TIME，并且服务器配置文件ServerSetting.ini中“StrictTimeChecks被设置为”true”，该消息将会直接被丢弃而不会进行处理。
+![image](https://github.com/Suyc323/XSuNet/blob/XSuNet3-master/Images/XSuNetOriginFramework.png)
 
-#### 超大数据分包发送（2.1）
-服务器2.0版本起支持接受超过单次传输大小上限的数据分为多个包进行传送，目前该功能在2.0版本处于Beta阶段，存在出现问题和修改、删除的可能，请暂时不要依赖该功能。该功能将在2.1版本正式可用并在说明文档中更新。
 
 
 
