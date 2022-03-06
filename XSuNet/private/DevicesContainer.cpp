@@ -25,8 +25,12 @@ XDevice* DevicesContainer::GetDevice(SOCKET Socket)
 			return device;
 			break;
 		}
-		else return NULL;
+		else
+		{
+			return NULL;
+		}
 	}
+	return NULL;
 }
 
 int DevicesContainer::GenarateNewDevice(std::string DeviceID,std::string DeviceClass, SOCKET Socket)

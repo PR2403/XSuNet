@@ -1,17 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="资源文件">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="XSu">
+      <UniqueIdentifier>{3e08954b-8b26-4406-9f68-8e902c5dbb1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EntryConnetor">
+      <UniqueIdentifier>{c5b33aaa-6892-497e-86da-e30d372cd0fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Class">
+      <UniqueIdentifier>{808a11cf-6a23-4a92-884d-644d3ebdeeb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handler">
+      <UniqueIdentifier>{fb95b8cb-9eff-48bd-b16c-2fd0ab10c32a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handler\INIHandler">
+      <UniqueIdentifier>{469fb940-859a-47d6-9f7a-1d0c5aff61dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handler\JsonHandler">
+      <UniqueIdentifier>{83bbba0a-9c24-465a-91a2-f14bd16b9962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{8a8b0fa6-1f72-4bf7-b809-203fd5c7c641}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="public\XSuCPPReflectRegister.h">
+      <Filter>XSu</Filter>
+    </ClInclude>
+    <ClInclude Include="public\XSuGC.h">
+      <Filter>XSu</Filter>
+    </ClInclude>
+    <ClInclude Include="public\XSuNet.h">
+      <Filter>XSu</Filter>
+    </ClInclude>
+    <ClInclude Include="public\XSuObject.h">
+      <Filter>XSu</Filter>
+    </ClInclude>
+    <ClInclude Include="public\EntryConnector.h">
+      <Filter>EntryConnetor</Filter>
+    </ClInclude>
+    <ClInclude Include="public\RecvTaskInfo.h">
+      <Filter>Class</Filter>
+    </ClInclude>
+    <ClInclude Include="public\SendTaskInfo.h">
+      <Filter>Class</Filter>
+    </ClInclude>
+    <ClInclude Include="public\INIHandler.h">
+      <Filter>Handler\INIHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="public\JsonHandler.h">
+      <Filter>Handler\JsonHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="public\MethodsLibrary.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="private\XSuCPPReflectRegister.cpp">
+      <Filter>XSu</Filter>
+    </ClCompile>
+    <ClCompile Include="private\XSuGC.cpp">
+      <Filter>XSu</Filter>
+    </ClCompile>
+    <ClCompile Include="private\XSuNet.cpp">
+      <Filter>XSu</Filter>
+    </ClCompile>
+    <ClCompile Include="private\XSuObject.cpp">
+      <Filter>XSu</Filter>
+    </ClCompile>
+    <ClCompile Include="private\EntryConnector.cpp">
+      <Filter>EntryConnetor</Filter>
+    </ClCompile>
+    <ClCompile Include="private\INIHandler.cpp">
+      <Filter>Handler\INIHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="private\JsonHandler.cpp">
+      <Filter>Handler\JsonHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="private\MethodsLibrary.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

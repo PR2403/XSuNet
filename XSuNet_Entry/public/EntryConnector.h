@@ -28,9 +28,6 @@ Copyright (c) 2021-2022 Suyc323.
 #include <unistd.h>//定义socklen_t
 */
 
-
-#include "Core.h"
-
 struct SendTaskInfo;
 
 //server_connector
@@ -39,7 +36,6 @@ class SocketConnector:public XSuObject
 public:
     SocketConnector(Core* SerCo,char* SER_IP,int SER_PORT);
     ~SocketConnector();
-    Core* ServerCore;//指向服务器业务核心ServerCore的指针
     //初始化，由process函数自动调用
     void init();
     //connector主线程
