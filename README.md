@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Development-3.0Alpha-green.svg)  ![](https://img.shields.io/badge/Release-2.0 LTS-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
+![](https://img.shields.io/badge/Development-3.0Alpha-green.svg)  ![](https://img.shields.io/badge/Release-2.0LTS-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
 
 长期支持版本2.0 LTS 已发布！
 
