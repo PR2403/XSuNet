@@ -15,10 +15,11 @@ Copyright (c) 2021-2022 Suyc323.
 #include "XSuCPPReflectRegister.h"
 #include "XSuGC.h"
 
-Core::Core()
+Core::Core():ClassName("Core")
 {
     std::cout << "XSuNet版本:"<<XSuNetVersion<< std::endl;
     printf( "正在启用XSuNet核心服务...\n");
+    
     THA = false;
     THB = false;
     THC = false;
@@ -34,8 +35,8 @@ Core::Core()
     CONNECTOR = new SocketConnector(this, SERVER_IP, SERVER_PORT);
     THPM=new std::thread(&Core::THPManager, this);
     printf("核心服务已启用√ \n");
-    APIH=(APIHandler*)CreateXSuObjByClassName("APIHandler");
-    DC=(DevicesContainer*)CreateXSuObjByClassName("DevicesContainer");
+    APIH=new APIHandler;
+    DC=new DevicesContainer;
 }
 
 Core::~Core()
@@ -44,14 +45,24 @@ Core::~Core()
     delete THBP;
     delete THCP;
     delete THPM;
-    CONNECTOR->DeleteThisObject();
+    delete CONNECTOR;
 }
 
+/**
+ * @brief 获取Core当前功能状态
+ * @return true：繁忙 false：空闲
+*/
 bool Core::IsBusy()
 {
 	return (sizeof(RecvTasks) > 0);
 }
 
+/**
+ * @brief 将收到的信息或要发出的信息加入对应的任务列表
+ * @param tasktype 任务类型（0：接受 1：发送）
+ * @param client 设备的套接字描述符
+ * @param info 信息内容
+*/
 void Core::AddTask(int tasktype,SOCKET client, char info[1024])
 {
     if (tasktype == 0)
@@ -66,6 +77,9 @@ void Core::AddTask(int tasktype,SOCKET client, char info[1024])
     }
 }
 
+/**
+ * @brief TaskHandler线程函数
+*/
 void Core::TaskHandler_A()
 {
     while (true)
@@ -90,6 +104,9 @@ void Core::TaskHandler_A()
     }
 }
 
+/**
+ * @brief TaskHandler线程函数
+*/
 void Core::TaskHandler_B()
 {
     while (true)
@@ -113,6 +130,10 @@ void Core::TaskHandler_B()
         //GetXSuNet()->GetGC()->DoGC();
     }
 }
+
+/**
+ * @brief TaskHandler线程函数
+*/
 void Core::TaskHandler_C()
 {
     while (true)
@@ -136,6 +157,10 @@ void Core::TaskHandler_C()
         //GetXSuNet()->GetGC()->DoGC();
     }
 }
+
+/**
+ * @brief TaskHandler线程函数
+*/
 void Core::TaskHandler_D()
 {
     while (true)
@@ -159,6 +184,9 @@ void Core::TaskHandler_D()
     }
 }
 
+/**
+ * @brief TaskHandler线程函数
+*/
 void Core::TaskHandler_E()
 {
     while (true)
@@ -182,6 +210,9 @@ void Core::TaskHandler_E()
     }
 }
 
+/**
+ * @brief TaskHandler线程函数
+*/
 void Core::TaskHandler_F()
 {
     while (true)
@@ -205,8 +236,13 @@ void Core::TaskHandler_F()
     }
 }
 
+/**
+ * @brief 线程管理器函数
+*/
 void Core::THPManager()
 {
+    THAP = new std::thread(&Core::TaskHandler_A, this);
+
     while (true)
     {
         
@@ -216,7 +252,7 @@ void Core::THPManager()
             THA = true;
             if (THAP = NULL)
             {
-                THAP = new std::thread(&Core::TaskHandler_A, this);
+                
             }
             if (sizeof(RecvTasks) > 2)
             {
@@ -295,9 +331,13 @@ void Core::THPManager()
     }
 }
 
+/**
+ * @brief 来信处理函数
+ * @param RInfo 收到的信息内容
+*/
 void Core::RInfoReader(RecvTaskInfo RInfo)
 {
-    JsonHandler_AnalysisTool* Jhandler = (JsonHandler_AnalysisTool*)CreateXSuObjByClassName("JsonHandler_AnalysisTool");
+    JsonHandler_AnalysisTool* Jhandler = new JsonHandler_AnalysisTool;
     bool IsSegmentMes = Jhandler->_get_Json_value_bool(RInfo.Sinfo, "SegmentMes");
     if (IsSegmentMes)//分包数据处理
     {
@@ -305,14 +345,14 @@ void Core::RInfoReader(RecvTaskInfo RInfo)
         int Section = Jhandler->_get_Json_value_int(RInfo.Sinfo, "Section");
         int SectionNum = Jhandler->_get_Json_value_int(RInfo.Sinfo, "SectionNum");
         SegmentMes SM = { MesID,Section,SectionNum,RInfo };
-        Jhandler->DeleteThisObject();
+        delete Jhandler;
         //实际功能实现
 
         //
     }
     else//常规数据处理
     {
-        Jhandler->DeleteThisObject();
+        delete Jhandler;
         APIH->APITaken(this,RInfo.Sinfo,RInfo.client);
     }
 }

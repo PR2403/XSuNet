@@ -8,7 +8,8 @@ Copyright (c) 2021-2022 Suyc323.
 #include "stdio.h"
 #include "SendTaskInfo.h"
 
-SocketConnector::SocketConnector(Core* SerCo,char* SER_IP,int SER_PORT)
+
+SocketConnector::SocketConnector(Core* SerCo,char* SER_IP,int SER_PORT):ClassName("SocketConnector")
 {
     ServerCore = SerCo;
     listener = 0;
@@ -21,7 +22,10 @@ SocketConnector::SocketConnector(Core* SerCo,char* SER_IP,int SER_PORT)
 SocketConnector::~SocketConnector()
 {
 }
-//初始化函数，功能创建监听套接字，绑定端口，并进行监听
+
+/**
+ * @brief 初始化函数:创建监听套接字，绑定端口，并进行监听
+*/
 void SocketConnector::init()
 {
     int   Ret;
@@ -49,6 +53,9 @@ void SocketConnector::init()
     socnum.emplace_back(listener);//加入监听套接字
 }
 
+/**
+ * @brief SocketConnetor主线程函数
+*/
 void SocketConnector::process()
 {
 
@@ -138,10 +145,11 @@ void SocketConnector::process()
 
     }
 }
-bool SocketConnector::canrebootnow()
-{
-    return (ServerCore->IsBusy());
-}
+
+/**
+ * @brief 发送数据包的功能函数
+ * @param info 要发送的数据信息和目标设备
+*/
 void SocketConnector::senddata(SendTaskInfo info)
 {
     send(info.client, info.Sinfo, 1024, 0);
@@ -173,7 +181,11 @@ bool SocketHandler::IsJsonData(std::string strData)
     return false;
 }
 
-SocketHandler::SocketHandler(SocketConnector* SERVER)
+/**
+ * @brief Socket信息处理器
+ * @param SERVER 指向SocketConnetor的指针
+*/
+SocketHandler::SocketHandler(SocketConnector* SERVER):ClassName("SocketHandler")
 {
     Ser = SERVER;
 }
@@ -182,7 +194,11 @@ SocketHandler::~SocketHandler()
 {
 }
 
-
+/**
+ * @brief 对收到信息进行格式校验并转发至Core
+ * @param Socket 信息来源的套接字描述符
+ * @param info 收到的信息内容
+*/
 void SocketHandler::TaskDistributor(SOCKET Socket, char info[1024])
 {
     string STR = info;

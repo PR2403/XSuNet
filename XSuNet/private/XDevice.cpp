@@ -2,7 +2,7 @@
 #include "JsonHandler.h"
 #include "LuaScript.h"
 
-XDevice::XDevice(std::string ID, std::string Class, SOCKET Socket)
+XDevice::XDevice(std::string ID, std::string Class, SOCKET Socket):ClassName("XDevice")
 {
 	DeviceID = ID;
 	DeviceSocket = Socket;

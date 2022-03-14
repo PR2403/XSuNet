@@ -17,7 +17,7 @@ XSuNet::XSuNet()
     CPPReflectSystem = new XSuCPPReflectRegister(this);
     CPPReflectSystem->InitClassReflect();
     GC = new XSuGC;
-    XuSNetCore =(Core*)(CPPReflectSystem->CreateXSuObj("Core"));
+    XuSNetCore =new Core;
 }
 
 XSuNet::~XSuNet()

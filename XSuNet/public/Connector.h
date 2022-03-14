@@ -5,7 +5,7 @@ Copyright (c) 2021-2022 Suyc323.
 */
 #pragma once
 
-#define XSuNetVersion "2.0.2"
+#define XSuNetVersion "3.0.3 Alpha"
 
 #include "XSuObject.h"
 #include "INIHandler.h"
@@ -37,17 +37,16 @@ struct SendTaskInfo;
 class SocketConnector:public XSuObject
 {
 public:
-    SocketConnector(Core* SerCo,char* SER_IP,int SER_PORT);
+    explicit SocketConnector(Core* SerCo,char* SER_IP,int SER_PORT);
     ~SocketConnector();
     Core* ServerCore;//指向服务器业务核心ServerCore的指针
     //初始化，由process函数自动调用
     void init();
     //connector主线程
     void process();
-    bool canrebootnow();
     void senddata(SendTaskInfo info);
 protected:
-    std::string ClassName = "SocketConnector";
+    const std::string ClassName;
 private:
     SOCKET listener;//客户端服务监听套接字
     sockaddr_in  serverAddr;//IPV4的地址方式
@@ -61,11 +60,11 @@ private:
 class SocketHandler:public XSuObject
 {
 public:
-    SocketHandler(SocketConnector* SERVER);
+    explicit SocketHandler(SocketConnector* SERVER);
     ~SocketHandler();
     void TaskDistributor(SOCKET client, char info[1024]);
 protected:
-    std::string ClassName = "SocketHandler";
+    const std::string ClassName;
 private:
     bool IsJsonData(std::string strData);
     SocketConnector* Ser;

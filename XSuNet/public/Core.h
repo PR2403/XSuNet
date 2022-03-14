@@ -14,6 +14,8 @@ Copyright (c) 2021-2022 Suyc323.
 #include <mutex>
 #include <thread>
 #include <vector>
+#include <condition_variable>
+#include <sstream>
 class APIHandler;
 class SocketConnector;
 class DevicesContainer;
@@ -23,32 +25,21 @@ class Core:public XSuObject
 public:
 	Core();
 	~Core();
-	//Core线程状态
-	bool IsBusy();
-	//添加Core收发任务
-	void AddTask(int tasktype, SOCKET client, char info[1024]);
 
+	bool IsBusy();
+	void AddTask(int tasktype, SOCKET client, char info[1024]);
 	SocketConnector* CONNECTOR;//server_connector
 	APIHandler* APIH;//APIHandler
 	DevicesContainer* DC;
 protected:
-	std::string ClassName = "Core";
+	const std::string ClassName;
 private:
-	//RecvTaskHandler线程1
 	void TaskHandler_A();
-	//RecvTaskHandler线程2
 	void TaskHandler_B();
-	//RecvTaskHandler线程3
 	void TaskHandler_C();
-	//SendTaskHandler线程4
 	void TaskHandler_D();
-	//SendTaskHandler线程5
 	void TaskHandler_E();
-	//SendTaskHandler线程6
 	void TaskHandler_F();
-
-	//RecvTaskHanler线程管理器
-
 	void THPManager();
 	void RInfoReader(RecvTaskInfo RInfo);
 
@@ -72,4 +63,52 @@ private:
 	bool THD;
 	bool THE;
 	bool THF;
+};
+
+class ThreadCtrl
+{
+public:
+	ThreadCtrl()
+		:m_flag(false)
+	{}
+	void wait()
+	{
+		std::unique_lock<std::mutex> lock(m_mutex);
+		m_cv.wait(lock, [=] { return m_flag; });
+		m_flag = false;
+	}
+	void wake()
+	{
+		std::unique_lock<std::mutex> lock(m_mutex);
+		m_flag = true;
+		m_cv.notify_one();
+	}
+private:
+	std::mutex m_mutex;
+	std::condition_variable m_cv;
+	bool m_flag;
+};
+
+class ThreadManage
+{
+public:
+	ThreadManage() {}
+	~ThreadManage()
+	{
+		for (auto ctrl : m_CtrlVec)
+			delete ctrl;
+		m_CtrlVec.clear();
+	}
+	ThreadCtrl* createCtrl()
+	{
+		auto ctrl = new ThreadCtrl();
+		m_mutex.lock();
+		m_CtrlVec.push_back(std::move(ctrl));
+		m_mutex.unlock();
+		return ctrl;
+	}
+	std::vector<ThreadCtrl*>& getAllCtrl() { return m_CtrlVec; }
+private:
+	std::vector<ThreadCtrl*> m_CtrlVec;
+	std::mutex m_mutex;
 };

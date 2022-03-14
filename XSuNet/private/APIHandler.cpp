@@ -12,6 +12,13 @@ Copyright (c) 2021-2022 Suyc323.
 #include <cstdio>
 
 typedef void(*FUNC)(Core* CORE, std::string,SOCKET);
+/**
+ * @brief API调用函数
+ * @param CORE 指向Core对象的指针
+ * @param Info 数据包的内容
+ * @param Socket 请求设备的套接字描述符
+ * @return 结果(0 失败 1 成功)
+*/
 int APIHandler::APITaken(Core* CORE, std::string Info,SOCKET Socket)
 {
 	JsonHandler_AnalysisTool* Jhandler = new JsonHandler_AnalysisTool;
@@ -29,6 +36,11 @@ int APIHandler::APITaken(Core* CORE, std::string Info,SOCKET Socket)
 	}
 }
 ;
+/**
+ * @brief 获取对象函数的功能函数
+ * @param FunName API函数名称
+ * @return 指向目标函数的指针
+*/
 long APIHandler::GetFunc(std::string FunName)
 {
 	unordered_map<std::string, long>::iterator it = FuncsMap.find(FunName);
@@ -40,6 +52,12 @@ long APIHandler::GetFunc(std::string FunName)
 
 }
 
+/**
+ * @brief API：设备注册
+ * @param CORE 指向Core对象的指针
+ * @param args 数据包中调用API对应的Args内容
+ * @param Socket 目标设备的套接字描述符
+*/
 void DEVICE_REGISTER(Core* CORE, std::string args, SOCKET Socket)
 {
 	JsonHandler_AnalysisTool* Jhandler = new JsonHandler_AnalysisTool;
@@ -49,11 +67,23 @@ void DEVICE_REGISTER(Core* CORE, std::string args, SOCKET Socket)
 	delete Jhandler;
 }
 
+/**
+ * @brief API:设备注销
+ * @param CORE 指向Core对象的指针
+ * @param args 数据包中调用API对应的Args内容
+ * @param Socket 目标设备的套接字描述符
+*/
 void DEVICE_DEREGISTER(Core* CORE, std::string args, SOCKET Socket)
 {
 	CORE->DC->DeleteDevice(Socket);
 }
 
+/**
+ * @brief API:设备状态更新
+ * @param CORE 
+ * @param args 
+ * @param Socket 
+*/
 void DEVICE_UPDATE_INFO(Core* CORE, std::string args, SOCKET Socket)
 {
 	JsonHandler_AnalysisTool* Jhandler = new JsonHandler_AnalysisTool;
@@ -68,6 +98,12 @@ void DEVICE_UPDATE_INFO(Core* CORE, std::string args, SOCKET Socket)
 	CORE->AddTask(1, Socket, content);
 }
 
+/**
+ * @brief 
+ * @param CORE 
+ * @param args 
+ * @param Socket 
+*/
 void CLIENT_FIND_DEVICE(Core* CORE, std::string args, SOCKET Socket)
 {
 	//等待前端开发进度，功能暂未实装

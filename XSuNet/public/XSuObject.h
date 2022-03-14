@@ -5,7 +5,7 @@
 
 class XSuObject {
 public:
-	std::string GetClassName() {
+	std::string GetXSuClassName() {
 		return ClassName;
 	};
 	bool ObjectIsDiscarded() {
@@ -21,8 +21,11 @@ public:
 		return XSN;
 	};
 	XSuObject* CreateXSuObjByClassName(std::string ClassName);
+
+	XSuObject():ClassName("XSuObject"){};
+	~XSuObject(){};
 protected:
-	std::string ClassName = "XSuObject";
+	const std::string ClassName;
 	bool Discarded = false;
 	XSuNet* XSN = NULL;
 };
