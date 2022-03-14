@@ -1,7 +1,5 @@
 ![](https://img.shields.io/badge/Development-3.0Alpha-green.svg)  ![](https://img.shields.io/badge/Release-2.0LTS-green.svg)  ![](https://img.shields.io/badge/By-Suyc323-orange.svg)
 
-长期支持版本2.0 LTS 已发布！
-
 查看3.0源码以了解我的最新开发进展和XSuNet的新功能特性，但是3.0Alpha版本目前不具有运行可用性，请不要下载编译使用。
 
 # XSuNet
