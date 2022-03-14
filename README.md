@@ -70,4 +70,4 @@ A SocketConnector-side framework for intelligent building cloud services.
 
 ### 逻辑功能使用Lua脚本语言
 当C++语言开发的XSuNet服务器主体收到Device上报的数据更新后，会将数据信息传递给用户定义的Lua脚本进行逻辑判断得出控制变量的最终值，并通过控制变量信息返回给Device完成控制过程。
-支持上层逻辑业务功能使用脚本语言实现可以使得拓展修改无需更改XSuNet的源码内容和重新编译，仅需修改Scrpts文件夹下的Lua脚本即可。Lua作为一种胶水语言，能很好的辅助C++完成逻辑业务，同时这一特性也为未来将加入的热更新和热拔插功能提供了框架支持。
+支持上层逻辑业务功能使用脚本语言实现可以使得拓展修改无需更改XSuNet的源码内容和重新编译，仅需修改Scrpts文件夹下的Lua脚本即可。
