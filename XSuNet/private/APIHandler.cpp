@@ -24,33 +24,28 @@ int APIHandler::APITaken(Core* CORE, std::string Info,SOCKET Socket)
 	JsonHandler_AnalysisTool* Jhandler = new JsonHandler_AnalysisTool;
 	std::string FunName = Jhandler->_get_Json_value_string(StringToChar(Info), "API");
 	std::string args = Jhandler->_get_Json_value_string(StringToChar(Info), "Args");
-	long APIFunc = GetFunc(FunName);
-	if (APIFunc!=0)
+	if (FunName =="DEVICE_REGISTER")
 	{
-		(FUNC(APIFunc)(CORE, args, Socket));
+		DEVICE_REGISTER(CORE, args, Socket);
 		return 1;
 	}
-	else
+	else if (FunName == "DEVICE_DEREGISTER")
+	{
+		DEVICE_DEREGISTER(CORE, args, Socket);
+		return 1;
+	}
+	else if (FunName == "DEVICE_UPDATE_INFO")
+	{
+		DEVICE_UPDATE_INFO(CORE, args, Socket);
+		return 1;
+	}
+	else 
 	{
 		return 0;
 	}
+
 }
 ;
-/**
- * @brief 获取对象函数的功能函数
- * @param FunName API函数名称
- * @return 指向目标函数的指针
-*/
-long APIHandler::GetFunc(std::string FunName)
-{
-	unordered_map<std::string, long>::iterator it = FuncsMap.find(FunName);
-
-	if (it != FuncsMap.end()) {
-		return it->second;
-	}
-	else return 0;
-
-}
 
 /**
  * @brief API：设备注册
@@ -58,7 +53,7 @@ long APIHandler::GetFunc(std::string FunName)
  * @param args 数据包中调用API对应的Args内容
  * @param Socket 目标设备的套接字描述符
 */
-void DEVICE_REGISTER(Core* CORE, std::string args, SOCKET Socket)
+void APIHandler::DEVICE_REGISTER(Core* CORE, std::string args, SOCKET Socket)
 {
 	JsonHandler_AnalysisTool* Jhandler = new JsonHandler_AnalysisTool;
 	std::string DeviceID = Jhandler->_get_Json_value_string(StringToChar(args), "DeviceID");
@@ -73,7 +68,7 @@ void DEVICE_REGISTER(Core* CORE, std::string args, SOCKET Socket)
  * @param args 数据包中调用API对应的Args内容
  * @param Socket 目标设备的套接字描述符
 */
-void DEVICE_DEREGISTER(Core* CORE, std::string args, SOCKET Socket)
+void APIHandler::DEVICE_DEREGISTER(Core* CORE, std::string args, SOCKET Socket)
 {
 	CORE->DC->DeleteDevice(Socket);
 }
@@ -84,7 +79,7 @@ void DEVICE_DEREGISTER(Core* CORE, std::string args, SOCKET Socket)
  * @param args 
  * @param Socket 
 */
-void DEVICE_UPDATE_INFO(Core* CORE, std::string args, SOCKET Socket)
+void APIHandler::DEVICE_UPDATE_INFO(Core* CORE, std::string args, SOCKET Socket)
 {
 	JsonHandler_AnalysisTool* Jhandler = new JsonHandler_AnalysisTool;
 	std::string Rep = Jhandler->_get_Json_value_string(StringToChar(args), "Rep");
@@ -96,15 +91,4 @@ void DEVICE_UPDATE_INFO(Core* CORE, std::string args, SOCKET Socket)
 	char content[1024];
 	strcpy_s(content,senddata.c_str());
 	CORE->AddTask(1, Socket, content);
-}
-
-/**
- * @brief 
- * @param CORE 
- * @param args 
- * @param Socket 
-*/
-void CLIENT_FIND_DEVICE(Core* CORE, std::string args, SOCKET Socket)
-{
-	//等待前端开发进度，功能暂未实装
 }
